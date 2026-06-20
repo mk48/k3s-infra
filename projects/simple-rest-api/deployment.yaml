@@ -26,13 +26,14 @@ spec:
               name: web
               protocol: TCP
 
-          readinessProbe:
-            httpGet:
-              path: /
-              port: web
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: web
+          #   periodSeconds: 30
           livenessProbe:
             httpGet:
               path: /
               port: web
             initialDelaySeconds: 3
-            periodSeconds: 20
+            periodSeconds: 30
