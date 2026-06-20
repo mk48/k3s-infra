@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: simple-rest-api
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io  # cleans up on delete
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/mk48/k3s-infra
+    targetRevision: HEAD
+    path: projects/simple-rest-api
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: pi
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
