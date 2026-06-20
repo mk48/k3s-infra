@@ -34,3 +34,5 @@ spec:
             httpGet:
               path: /
               port: web
+            initialDelaySeconds: 3
+            periodSeconds: 20
