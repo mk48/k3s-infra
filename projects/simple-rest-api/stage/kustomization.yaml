@@ -6,11 +6,21 @@ resources:
 - ../common
 
 patches:
-- path: ingress.yaml
-  target:
+- target:
     kind: Ingress
     name: hello-world-ingress
-    
+  patch: |-
+    - op: replace
+      path: /spec/rules/0/host
+      value: hello-stage.local
+- target:
+    kind: Deployment
+    name: hello-world
+  patch: |-
+    - op: replace
+      path: /spec/replicas
+      value: 1
+
 images:
 - name: ghcr.io/mk48/simple-http
   newTag: "3"
