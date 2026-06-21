@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/mk48/k3s-infra
-    targetRevision: HEAD
+    targetRevision: main
     path: argocd/apps                  # watches this folder
   destination:
     server: https://kubernetes.default.svc

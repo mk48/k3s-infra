@@ -1,0 +1,5 @@
+clusters:
+  stage:
+    name: stage
+  prod:
+    name: prod

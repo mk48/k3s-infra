@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hello-world
-  namespace: pi
 spec:
   replicas: 2
   selector:
@@ -16,21 +15,24 @@ spec:
       containers:
         - name: hello-world
           image: ghcr.io/mk48/simple-http:latest
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           resources:
             requests:
-              memory: "12Mi"
               cpu: "2m"
+              memory: "12Mi"
+            limits:
+              cpu: 100m
+              memory: 64Mi
           ports:
             - containerPort: 8080
               name: web
               protocol: TCP
 
-          # readinessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: web
-          #   periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /
+              port: web
+            periodSeconds: 30
           livenessProbe:
             httpGet:
               path: /

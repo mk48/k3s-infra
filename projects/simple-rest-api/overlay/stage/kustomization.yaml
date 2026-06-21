@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: pi-stage
+
+resources:
+- ../common
+
+patches:
+- path: ingress.yaml
+  target:
+    kind: Ingress
+    name: hello-world-ingress
+    
+images:
+- name: ghcr.io/mk48/simple-http
+  newTag: "3"
