@@ -4,6 +4,7 @@ namespace: pi-prod
 
 resources:
 - ../common
+- configmap.yaml
 
 patches:
 - target:

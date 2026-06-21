@@ -4,6 +4,7 @@ namespace: pi-stage
 
 resources:
 - ../common
+- configmap.yaml
 
 patches:
 - target:
