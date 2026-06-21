@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: https://github.com/mk48/k3s-infra
     targetRevision: main
-    path: projects/simple-rest-api/overlay/{{ $cluster.name }}
+    path: projects/simple-rest-api/{{ $cluster.name }}
   destination:
     server: https://kubernetes.default.svc
     namespace: pi-{{ $cluster.name }}
