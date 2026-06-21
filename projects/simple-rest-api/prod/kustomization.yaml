@@ -13,7 +13,16 @@ patches:
     - op: replace
       path: /spec/rules/0/host
       value: hello.local
-
+- target:
+    kind: Deployment
+    name: hello-world
+  patch: |-
+    - op: add
+      path: /spec/template/spec/containers/0/envFrom
+      value:
+        - configMapRef:
+            name: hello-world-config
+            
 images:
 - name: ghcr.io/mk48/simple-http
-  newTag: "3"
+  newTag: "4"

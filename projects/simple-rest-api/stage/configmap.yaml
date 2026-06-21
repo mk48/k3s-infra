@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hello-world-config
+data:
+  ENV: "stage"
+  CONNECTION_STR: "some staging value"

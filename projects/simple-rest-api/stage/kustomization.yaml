@@ -20,7 +20,16 @@ patches:
     - op: replace
       path: /spec/replicas
       value: 1
+- target:
+    kind: Deployment
+    name: hello-world
+  patch: |-
+    - op: add
+      path: /spec/template/spec/containers/0/envFrom
+      value:
+        - configMapRef:
+            name: hello-world-config
 
 images:
 - name: ghcr.io/mk48/simple-http
-  newTag: "3"
+  newTag: "4"
