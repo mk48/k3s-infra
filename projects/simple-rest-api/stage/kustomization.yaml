@@ -5,6 +5,7 @@ namespace: pi-stage
 resources:
 - ../common
 - configmap.yaml
+- externalsecret.yaml
 
 patches:
 - target:
@@ -30,6 +31,15 @@ patches:
       value:
         - configMapRef:
             name: hello-world-config
+- target:
+    kind: Deployment
+    name: hello-world
+  patch: |-
+    - op: add
+      path: /spec/template/spec/containers/0/envFrom/-
+      value:
+        secretRef:
+          name: hello-world-secret
 
 images:
 - name: ghcr.io/mk48/simple-http
