@@ -36,4 +36,4 @@ patches:
 
 images:
 - name: ghcr.io/mk48/simple-http
-  newTag: "4"
+  newTag: "5"
